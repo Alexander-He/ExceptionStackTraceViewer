@@ -16,11 +16,13 @@ namespace ExceptionStackTraceViewer
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            textBox2.Text = textBox1.Text.Trim()
-                                         .Replace("\r\n ", Environment.NewLine)
-                                         .Replace(" at ", $" {Environment.NewLine}at ")
-                                         .Replace("  --- ", $" {Environment.NewLine}{Environment.NewLine}  --- ")
-                                         .Replace(" ---> ", $" {Environment.NewLine}{Environment.NewLine} ---> ");
+            var result = textBox1.Text.Trim()
+                                    .Replace("\r\n ", Environment.NewLine)
+                                    .Replace("\\r\\n ", Environment.NewLine)
+                                    .Replace(" at ", $" {Environment.NewLine}at ")
+                                    .Replace("  --- ", $" {Environment.NewLine}{Environment.NewLine}  --- ")
+                                    .Replace(" ---> ", $" {Environment.NewLine}{Environment.NewLine} ---> ");
+            textBox2.Text = result;
         }
 
         private void textBox1_Click(object sender, EventArgs e)
